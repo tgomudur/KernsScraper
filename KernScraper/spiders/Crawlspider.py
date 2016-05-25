@@ -37,7 +37,7 @@ class KernSpider(Spider):
             try:
                 file_url = row.xpath(".//td/a/@href")[1].extract()
                 print "Scraping" + file_url
-                filename = row.xpath(".//td/a/text()")[-1].extract().replace(u'\xa0',u' ')
+                filename = row.xpath(".//td/a/text()")[-1].extract().replace(u'\xa0',u' ').encode('utf-8').strip()
                 yield Request(file_url, callback=self.parse_song1, meta={'path':parent_dir + filename})
             except:
                 continue
