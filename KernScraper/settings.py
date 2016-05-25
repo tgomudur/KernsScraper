@@ -13,7 +13,7 @@ BOT_NAME = 'KernScraper'
 
 SPIDER_MODULES = ['KernScraper.spiders']
 NEWSPIDER_MODULE = 'KernScraper.spiders'
-
+LOG_FILE = 'scrapy.log'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'KernScraper (+http://www.yourdomain.com)'
