@@ -46,5 +46,5 @@ class KernSpider(Spider):
         filename = response.meta['path'] + '.txt'
         print "Filename "+ filename
         if not os.path.isfile(filename):
-            with open(filename, 'wb') as f:
+            with open(filename, 'w') as f:
                 f.write(response.body)
