@@ -36,15 +36,16 @@ class KernSpider(Spider):
         for row in response.xpath("//tr[@valign='top']"):
             try:
                 file_url = row.xpath(".//td/a/@href")[1].extract()
-                print "Scraping" + file_url
-                filename = row.xpath(".//td/a/text()")[-1].extract().replace(u'\xa0',u' ').encode('utf-8').strip()
+                # print "Scraping" + file_url
+                # filename = row.xpath(".//td/a/text()")[-1].extract().replace(u'\xa0',u' ').encode('utf-8').strip()
+                filename = file_url.split('/')[-1].split('&')[1].split("=")[-1]
                 yield Request(file_url, callback=self.parse_song1, meta={'path':parent_dir + filename})
             except:
                 continue
 
     def parse_song1(self, response):
         filename = response.meta['path'] + '.txt'
-        print "Filename "+ filename
+        # print "Filename "+ filename
         if not os.path.isfile(filename):
             with open(filename, 'w') as f:
                 f.write(response.body)
