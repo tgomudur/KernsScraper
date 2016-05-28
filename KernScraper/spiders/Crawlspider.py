@@ -20,7 +20,7 @@ class KernSpider(Spider):
         section = response.xpath("//center/table")[-1]
         print categories
         tables = section.xpath(".//tr[@valign='top']")
-        for idx, table in enumerate(tables):
+        for idx, table in enumerate(tables[:1]):
             output_path = self.OUTPUT_DIR + categories[idx] + '/'
             if not os.path.exists(output_path):
                 os.makedirs(output_path)
